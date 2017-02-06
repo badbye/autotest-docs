@@ -72,7 +72,7 @@ In the for loop, error occurs when ``i = 5``.
     | Your answer is 5, which is not equal to the correct answer 6
 
 
-You can set ``trace=FALSE`` in the ``expect_equal`` function to close this feature.
+You can set ``trace=FALSE`` in the ``expect_equal`` function to close the automatic tracing.
 
 .. code-block:: python
     :emphasize-lines: 5
@@ -89,7 +89,8 @@ You can set ``trace=FALSE`` in the ``expect_equal`` function to close this featu
     | AutoTestCaseError:
     | Your answer is 5, which is not equal to the correct answer 6
 
-
+Given this error, no one could figure out what is going on if he/she do not the test code.
+Do not worry, keep reading the next following section.
 
 Self-defined Error Message
 --------------------------
@@ -105,7 +106,7 @@ the default error.
 
 - It should be defined before the ``expect_equal`` function.
 
-- The arguments are exactly the same with the built-in function `sprintf`.
+- The arguments is exactly the same with the built-in function `sprintf`.
 
 .. code-block:: python
     :emphasize-lines: 5
@@ -159,9 +160,10 @@ Read More
 
 - :doc:`2-expect_functions`
 
-The ``expect_equal`` function can compare with a lot of data types: `numeric`, `character`,
-`matrix`, and even `data.frame`. There are also more functions like ``expect_true`` and
-``expect_false`` testing whether an expression returns true or false.
+The ``expect_equal`` function is used to test whether two objects/expressions are equal.
+It supports a lot of data types: `numeric`, `character`, `matrix`, and even `data.frame`.
+There are also more functions like ``expect_true`` and ``expect_false`` testing whether
+an expression returns true or false.
 
 - :doc:`3-error_message`
 
