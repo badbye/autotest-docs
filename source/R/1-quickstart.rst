@@ -2,10 +2,8 @@
 Quick Start
 ===========
 
-Learn how to write test code in 10 minutes.
-
 There are mainly two functions in this package: ``test_that`` and ``expect_equal``.
-The ``test_that`` is a block of testing that may contains one or more expectations.
+The ``test_that`` function is a block of testing that may contains one or more expectations.
 Expectations are usually ``expect_equal`` function calls.
 
 
@@ -29,16 +27,16 @@ Here is the test code:
 - If the ``x`` variable is not defined, it will given an error:
 
 .. error::
-    AutoTestCaseError:
-    Testing variable/expression:  x
-    object 'x' not found
+    | AutoTestCaseError:
+    | Testing variable/expression:  x
+    | object 'x' not found
 
 - If ``x`` does not equal to 1, it will given an error:
 
 .. error::
-    AutoTestCaseError:
-    Testing variable/expression:  x
-    Your answer is 2, which is not equal to the correct answer 1
+    | AutoTestCaseError:
+    | Testing variable/expression:  x
+    | Your answer is 2, which is not equal to the correct answer 1
 
 
 Automatic Tracing
@@ -66,10 +64,12 @@ returns ``x+1`` given a number ``x``.
         }
     })
 
+In the for loop, error occurs when ``i = 5``.
+
 .. error::
-    AutoTestCaseError:
-    Testing variable/expression:  f(i)
-    Your answer is 5, which is not equal to the correct answer 6
+    | AutoTestCaseError:
+    | Testing variable/expression:  f(i)
+    | Your answer is 5, which is not equal to the correct answer 6
 
 
 You can set ``trace=FALSE`` in the ``expect_equal`` function to close this feature.
@@ -86,20 +86,20 @@ You can set ``trace=FALSE`` in the ``expect_equal`` function to close this featu
     })
 
 .. error::
-    AutoTestCaseError:
-    Your answer is 5, which is not equal to the correct answer 6
+    | AutoTestCaseError:
+    | Your answer is 5, which is not equal to the correct answer 6
 
 
 
 Self-defined Error Message
 --------------------------
 
-In the previous example, error occurs when ``i=5``. However, the tracing message
+In the previous example, error occurs when ``i = 5``. However, the tracing message
 ``Testing variable/expression:  f(i)`` does not tell what ``i`` is. Users may be
 confusing that what input triggers the error.
 
 Here we introduce a function ``registerPreMsg``, which is used to insert messages before
-the default error messages.
+the default error.
 
 - It only shows when there is an error.
 
@@ -114,7 +114,7 @@ the default error messages.
     f <- function(x) ifelse(x < 5, x + 1, x)
     test_that('testing x', {
         for (i in 1:10){
-            registerPreMsg('In testing f(%d)', i)
+            registerPreMsg('In testing f(%d):', i)
             expect_equal(f(i), i + 1)
         }
     })
@@ -123,10 +123,10 @@ Here is the error message:
 
 .. error::
 
-    AutoTestCaseError:
-    Testing variable/expression:  f(i)
-    In testing f(5)
-    Your answer is 5, which is not equal to the correct answer 6
+    | AutoTestCaseError:
+    | Testing variable/expression:  f(i)
+    | In testing f(5):
+    | Your answer is 5, which is not equal to the correct answer 6
 
 
 After defining our own error message, the automatic tracing message is useless.
@@ -139,19 +139,32 @@ Set ``trace=FALSE`` to remove it.
     f <- function(x) ifelse(x < 5, x + 1, x)
     test_that('testing x', {
         for (i in 1:10){
-            registerPreMsg('In testing f(%d)', i)
+            registerPreMsg('In testing f(%d):', i)
             expect_equal(f(i), i + 1, trace=FALSE)
         }
     })
+
+Now it is perfect!
+
+.. error::
+
+    | AutoTestCaseError:
+    | In testing f(5):
+    | Your answer is 5, which is not equal to the correct answer 6
+
 
 
 Read More
 ---------
 
-1. The ``expect_equal`` function can compare with a lot of data types: `numeric`, `character`,
+- :doc:`2-expect_functions`
+
+The ``expect_equal`` function can compare with a lot of data types: `numeric`, `character`,
 `matrix`, and even `data.frame`. There are also more functions like ``expect_true`` and
 ``expect_false`` testing whether an expression returns true or false.
 
-2.
+- :doc:`3-error_message`
+
 To customize error messages, more APIs are designed.
 The ``registerPreMsg`` function is just one of them.
+We also have a function ``registerPostMsg`` insert messages after the default error.
