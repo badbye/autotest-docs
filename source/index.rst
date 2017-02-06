@@ -10,7 +10,10 @@ Contents:
 
 .. toctree::
    :maxdepth: 2
+   :glob:
 
+   R/index
+   Python/index
 
 
 Indices and tables

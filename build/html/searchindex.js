@@ -1,1 +1,1 @@
-Search.setIndex({envversion:47,filenames:["index"],objects:{},objnames:{},objtypes:{},terms:{content:0,index:0,modul:0,page:0,search:0},titles:["Welcome to autotest&#8217;s documentation!"],titleterms:{autotest:0,document:0,indic:0,tabl:0,welcom:0}})
+Search.setIndex({envversion:47,filenames:["Python/index","R/index","index"],objects:{},objnames:{},objtypes:{},terms:{content:2,index:2,modul:2,page:2,search:2},titles:["autotest in Python","autotest in R","Welcome to autotest&#8217;s documentation!"],titleterms:{autotest:[0,1,2],document:2,indic:2,python:0,tabl:2,welcom:2}})
