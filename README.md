@@ -13,7 +13,7 @@ The documents are using `reStructuredText` format, which is very similar to Mark
 
 Setup locally:
 
-```python
+```bash
 sudo pip install sphinx sphinx-autobuild
 
 make html # build, it will generate a `build` folder
