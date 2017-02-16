@@ -24,14 +24,14 @@ Here is the test code:
         expect_equal(y, 1)
     })
 
-- If the ``x`` variable is not defined, it will given an error:
+- If the ``x`` variable is not defined, it will give an error:
 
 .. error::
     | AutoTestCaseError:
     | Testing variable/expression:  x
     | object 'x' not found
 
-- If ``x`` does not equal to 1, it will given an error:
+- If ``x`` does not equal to 1, it will give an error:
 
 .. error::
     | AutoTestCaseError:
@@ -58,7 +58,7 @@ returns ``x+1`` given a number ``x``.
 
     library(autotest)
     f <- function(x) ifelse(x < 5, x + 1, x)  # give a wrong solution to see the error message
-    test_that('testing x', {
+    test_that('testing f', {
         for (i in 1:10){
             expect_equal(f(i), i + 1)
         }
@@ -74,12 +74,12 @@ In the for loop, error occurs when ``i = 5``.
 
 You can set ``trace=FALSE`` in the ``expect_equal`` function to close the automatic tracing.
 
-.. code-block:: python
+.. code-block:: r
     :emphasize-lines: 5
 
     library(autotest)
     f <- function(x) ifelse(x < 5, x + 1, x)
-    test_that('testing x', {
+    test_that('testing f', {
         for (i in 1:10){
             expect_equal(f(i), i + 1, trace=FALSE)  # trace=FALSE
         }
@@ -89,8 +89,9 @@ You can set ``trace=FALSE`` in the ``expect_equal`` function to close the automa
     | AutoTestCaseError:
     | Your answer is 5, which is not equal to the correct answer 6
 
-Given this error, no one could figure out what is going on if he/she do not the test code.
-Do not worry, keep reading the next following section.
+Given this error, no one could figure out what is going on if he/she can not see the test code.
+Do not worry, you will learn how to define error message in the next section.
+
 
 Self-defined Error Message
 --------------------------
@@ -106,14 +107,14 @@ the default error.
 
 - It should be defined before the ``expect_equal`` function.
 
-- The arguments is exactly the same with the built-in function `sprintf`.
+- The arguments are exactly the same with the built-in function `sprintf`.
 
-.. code-block:: python
+.. code-block:: r
     :emphasize-lines: 5
 
     library(autotest)
     f <- function(x) ifelse(x < 5, x + 1, x)
-    test_that('testing x', {
+    test_that('testing f', {
         for (i in 1:10){
             registerPreMsg('In testing f(%d):', i)
             expect_equal(f(i), i + 1)
@@ -133,12 +134,12 @@ Here is the error message:
 After defining our own error message, the automatic tracing message is useless.
 Set ``trace=FALSE`` to remove it.
 
-.. code-block:: python
+.. code-block:: r
     :emphasize-lines: 5,6
 
     library(autotest)
     f <- function(x) ifelse(x < 5, x + 1, x)
-    test_that('testing x', {
+    test_that('testing function f', {
         for (i in 1:10){
             registerPreMsg('In testing f(%d):', i)
             expect_equal(f(i), i + 1, trace=FALSE)
@@ -161,7 +162,7 @@ Read More
 - :doc:`2-expect_functions`
 
 The ``expect_equal`` function is used to test whether two objects/expressions are equal.
-It supports a lot of data types: `numeric`, `character`, `matrix`, and even `data.frame`.
+It supports a lot of data types: ``numeric``, ``character``, ``matrix``, and even ``data.frame``.
 There are also more functions like ``expect_true`` and ``expect_false`` testing whether
 an expression returns true or false.
 
