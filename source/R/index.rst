@@ -1,5 +1,5 @@
 autotest in R
-==============
+=============
 
 .. note::
 
@@ -13,4 +13,4 @@ autotest in R
     1-quickstart
     2-expect_functions
     3-error_message
-    4-develop
+    4-example
