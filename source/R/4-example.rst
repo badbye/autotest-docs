@@ -138,5 +138,16 @@ Compared with the error messages with previous two blocks, the line `Testing var
     ## Your answer is 2, which is not equal to the correct answer 1
 
 
+Self-Defined Error
+------------------
 
+.. code-block:: r
 
+    x = 2
+    test_that('', {
+      registerPostMsg('Your answer is wrong. Please try again.')
+      expect_equal(x, 1, suppressErr=T)
+    })
+    ## AutoTestCaseError:
+    ## Testing variable/expression:  x
+    ## Your answer is wrong. Please try again.
